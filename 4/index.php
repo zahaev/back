@@ -1,21 +1,21 @@
 <?php
-// Отправляем браузеру правильную кодировку,
-// файл index.php должен быть в кодировке UTF-8 без BOM.
+// РћС‚РїСЂР°РІР»СЏРµРј Р±СЂР°СѓР·РµСЂСѓ РїСЂР°РІРёР»СЊРЅСѓСЋ РєРѕРґРёСЂРѕРІРєСѓ,
+// С„Р°Р№Р» index.php РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ РєРѕРґРёСЂРѕРІРєРµ UTF-8 Р±РµР· BOM.
 header('Content-Type: text/html; charset=UTF-8');
 
-// В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
-// и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
+// Р’ СЃСѓРїРµСЂРіР»РѕР±Р°Р»СЊРЅРѕРј РјР°СЃСЃРёРІРµ $_SERVER PHP СЃРѕС…СЂР°РЅСЏРµС‚ РЅРµРєС‚РѕСЂС‹Рµ Р·Р°РіРѕР»РѕРІРєРё Р·Р°РїСЂРѕСЃР° HTTP
+// Рё РґСЂСѓРіРёРµ СЃРІРµРґРµРЅРёСЏ Рѕ РєР»РёРЅРµРЅС‚Рµ Рё СЃРµСЂРІРµСЂРµ, РЅР°РїСЂРёРјРµСЂ РјРµС‚РѕРґ С‚РµРєСѓС‰РµРіРѕ Р·Р°РїСЂРѕСЃР° $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   
   $messages = array();
 
   if (!empty($_COOKIE['save'])) {
     setcookie('save', '', 100000);
-    // Если есть параметр save, то выводим сообщение пользователю.
-    $messages[] = 'Спасибо, результаты сохранены.';
+    // Р•СЃР»Рё РµСЃС‚СЊ РїР°СЂР°РјРµС‚СЂ save, С‚Рѕ РІС‹РІРѕРґРёРј СЃРѕРѕР±С‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ.
+    $messages[] = 'РЎРїР°СЃРёР±Рѕ, СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЃРѕС…СЂР°РЅРµРЅС‹.';
   }
 
-  // Складываем признак ошибок в массив.
+  // РЎРєР»Р°РґС‹РІР°РµРј РїСЂРёР·РЅР°Рє РѕС€РёР±РѕРє РІ РјР°СЃСЃРёРІ.
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']);
   $errors['email'] = !empty($_COOKIE['email_error']);
@@ -26,41 +26,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors['bio'] = !empty($_COOKIE['bio_error']);
   $errors['check-1'] = !empty($_COOKIE['check_error']);
 
-  // Выдаем сообщения об ошибках.
+  // Р’С‹РґР°РµРј СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С….
   if ($errors['name']) {
     setcookie('name_error', '', 100000);
-    $messages[] = '<div class="pas error">Заполните имя или у него неверный формат (only English)</div>';
+    $messages[] = '<div class="pas error">Р—Р°РїРѕР»РЅРёС‚Рµ РёРјСЏ РёР»Рё Сѓ РЅРµРіРѕ РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ (only English)</div>';
   }
   if ($errors['email']) {
     setcookie('email_error', '', 100000);
-    $messages[] = '<div class="pas error">Заполните имейл или у него неверный формат</div>';
+    $messages[] = '<div class="pas error">Р—Р°РїРѕР»РЅРёС‚Рµ РёРјРµР№Р» РёР»Рё Сѓ РЅРµРіРѕ РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚</div>';
   }
   if ($errors['year']) {
     setcookie('year_error', '', 100000);
-    $messages[] = '<div class="pas error">Выберите год.</div>';
+    $messages[] = '<div class="pas error">Р’С‹Р±РµСЂРёС‚Рµ РіРѕРґ.</div>';
   }
   if ($errors['radio-1']) {
     setcookie('pol_error', '', 100000);
-    $messages[] = '<div class="pas error">Выберите пол.</div>';
+    $messages[] = '<div class="pas error">Р’С‹Р±РµСЂРёС‚Рµ РїРѕР».</div>';
   }
   if ($errors['radio-2']) {
     setcookie('limb_error', '', 100000);
-    $messages[] = '<div class="pas error">Укажите кол-во конечностей.</div>';
+    $messages[] = '<div class="pas error">РЈРєР°Р¶РёС‚Рµ РєРѕР»-РІРѕ РєРѕРЅРµС‡РЅРѕСЃС‚РµР№.</div>';
   }
   if ($errors['super']) {
     setcookie('super_error', '', 100000);
-    $messages[] = '<div class="pas error">Выберите суперспособности(хотя бы одну).</div>';
+    $messages[] = '<div class="pas error">Р’С‹Р±РµСЂРёС‚Рµ СЃСѓРїРµСЂСЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё(С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ).</div>';
   }
   if ($errors['bio']) {
     setcookie('bio_error', '', 100000);
-    $messages[] = '<div class="pas error">Заполните биографию или у неё неверный формат (only English)</div>';
+    $messages[] = '<div class="pas error">Р—Р°РїРѕР»РЅРёС‚Рµ Р±РёРѕРіСЂР°С„РёСЋ РёР»Рё Сѓ РЅРµС‘ РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ (only English)</div>';
   }
   if ($errors['check-1']) {
     setcookie('check_error', '', 100000);
-    $messages[] = '<div class="pas error">Вы должны быть согласны дать свои данные.</div>';
+    $messages[] = '<div class="pas error">Р’С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЃРѕРіР»Р°СЃРЅС‹ РґР°С‚СЊ СЃРІРѕРё РґР°РЅРЅС‹Рµ.</div>';
   }
   
-  // Складываем предыдущие значения полей в массив, если есть.
+  // РЎРєР»Р°РґС‹РІР°РµРј РїСЂРµРґС‹РґСѓС‰РёРµ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№ РІ РјР°СЃСЃРёРІ, РµСЃР»Рё РµСЃС‚СЊ.
   $values = array();
   $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
   $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
@@ -73,18 +73,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
   $values['check-1'] = empty($_COOKIE['check_value']) ? 0 : $_COOKIE['check_value'];
 
-  // Включаем содержимое файла form.php.
-  // В нем будут доступны переменные $messages, $errors и $values для вывода 
-  // сообщений, полей с ранее заполненными данными и признаками ошибок.
+  // Р’РєР»СЋС‡Р°РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р° form.php.
+  // Р’ РЅРµРј Р±СѓРґСѓС‚ РґРѕСЃС‚СѓРїРЅС‹ РїРµСЂРµРјРµРЅРЅС‹Рµ $messages, $errors Рё $values РґР»СЏ РІС‹РІРѕРґР° 
+  // СЃРѕРѕР±С‰РµРЅРёР№, РїРѕР»РµР№ СЃ СЂР°РЅРµРµ Р·Р°РїРѕР»РЅРµРЅРЅС‹РјРё РґР°РЅРЅС‹РјРё Рё РїСЂРёР·РЅР°РєР°РјРё РѕС€РёР±РѕРє.
   include('form.php');
 }
 else {
-  //Регулярные выражения
+  //Р РµРіСѓР»СЏСЂРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ
   $bioregex = "/^\s*\w+[\w\s\.,-]*$/";
   $nameregex = "/^\w+[\w\s-]*$/";
   $mailregex = "/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
 	
-  // Проверяем ошибки.
+  // РџСЂРѕРІРµСЂСЏРµРј РѕС€РёР±РєРё.
   $errors = FALSE;
   if ((empty($_POST['name'])) || (!preg_match($nameregex,$_POST['name']))) {
     setcookie('name_error', '1', time() + 24 * 60 * 60);
@@ -92,7 +92,7 @@ else {
     $errors = TRUE;
   }
   else {
-    // Сохраняем ранее введенное в форму значение на год.
+    // РЎРѕС…СЂР°РЅСЏРµРј СЂР°РЅРµРµ РІРІРµРґРµРЅРЅРѕРµ РІ С„РѕСЂРјСѓ Р·РЅР°С‡РµРЅРёРµ РЅР° РіРѕРґ.
     setcookie('name_value', $_POST['name'], time() + 12 * 30 * 24 * 60 * 60);
     setcookie('name_error', '', 100000);
   }
@@ -107,7 +107,7 @@ else {
     setcookie('email_error', '', 100000);
   }
   
-  if ($_POST['year']=='Год') {
+  if ($_POST['year']=='Р“РѕРґ') {
     setcookie('year_error', '1', time() + 24 * 60 * 60);
     setcookie('year_value', '', 100000);
     $errors = TRUE;
@@ -184,12 +184,12 @@ else {
   }
 
   if ($errors) {
-    // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
+    // РџСЂРё РЅР°Р»РёС‡РёРё РѕС€РёР±РѕРє РїРµСЂРµР·Р°РіСЂСѓР¶Р°РµРј СЃС‚СЂР°РЅРёС†Сѓ Рё Р·Р°РІРµСЂС€Р°РµРј СЂР°Р±РѕС‚Сѓ СЃРєСЂРёРїС‚Р°.
     header('Location: index.php');
     exit();
   }
   else {
-    // Удаляем Cookies с признаками ошибок.
+    // РЈРґР°Р»СЏРµРј Cookies СЃ РїСЂРёР·РЅР°РєР°РјРё РѕС€РёР±РѕРє.
     setcookie('name_error', '', 100000);
     setcookie('email_error', '', 100000);
     setcookie('year_error', '', 100000);
@@ -208,10 +208,10 @@ else {
   $superpowers = $_POST['super'];
   $bio= $_POST['bio'];
 
-  // Сохранение в БД.
+  // РЎРѕС…СЂР°РЅРµРЅРёРµ РІ Р‘Р”.
 $user = 'u52943';
 $pass = '2352838';
-  $db = new PDO('mysql:host=localhost;dbname=u52943', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $db = new PDO('mysql:host=localhost;dbname=u52927', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
    try {
     $stmt = $db->prepare("INSERT INTO form SET name=:name, email=:email, year=:byear, pol=:pol, limbs=:limbs, bio=:bio");
     $stmt->bindParam(':name', $name);
@@ -242,9 +242,9 @@ $pass = '2352838';
     exit();
   }
 
-  // Сохраняем куку с признаком успешного сохранения.
+  // РЎРѕС…СЂР°РЅСЏРµРј РєСѓРєСѓ СЃ РїСЂРёР·РЅР°РєРѕРј СѓСЃРїРµС€РЅРѕРіРѕ СЃРѕС…СЂР°РЅРµРЅРёСЏ.
   setcookie('save', '1');
 
-  // Делаем перенаправление.
+  // Р”РµР»Р°РµРј РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ.
   header('Location: index.php');
 }
