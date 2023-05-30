@@ -1,0 +1,25 @@
+body {
+    background-color: #808080;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.main {
+    padding: 40px;
+    width: 250px;
+    background-color: #42aaff;
+    border: 2px solid #000f;
+}
+
+h1 {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+p {
+    padding: 5%;
+    border: 1px solid #fd0130;
+    border-radius: 3px;
+}
