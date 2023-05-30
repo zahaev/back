@@ -91,9 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['walk'] = 0;
   $values['fly'] = 0;
   
-  $user = 'u52927';
-  $pass = '5758562';
-  $db = new PDO('mysql:host=localhost;dbname=u52927', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $user = 'u52943';
+  $pass = '2352838';
+  $db = new PDO('mysql:host=localhost;dbname=u52943', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   try{
       $id=$_GET['edit_id'];
       $get=$db->prepare("SELECT * FROM form WHERE id=?");
