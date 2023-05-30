@@ -32,7 +32,7 @@ h1{
 <?php
 if (!empty($messages)) {
   print('<div id="messages">');
-  // Выводим все сообщения.
+  // Р’С‹РІРѕРґРёРј РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ.
   foreach ($messages as $message) {
     print($message);
   }
@@ -41,23 +41,23 @@ if (!empty($messages)) {
 ?>
 <body>
     <div class="main">
-    <h1>Форма</h1>
+    <h1>Р¤РѕСЂРјР°</h1>
     
     <form action="index.php" method="POST">
             <div class="pas <?php if ($errors['name']) {print 'error';} ?>" >
-                Имя:
-                <input name="name" placeholder="Введите имя" 
+                РРјСЏ:
+                <input name="name" placeholder="Р’РІРµРґРёС‚Рµ РёРјСЏ" 
                  value="<?php print $values['name']; ?>" />
             </div>
 
             <div class="pas <?php if ($errors['email']) {print 'error';} ?>">
                 E-mail:
-                <input name="email" type="email" placeholder="Введите почту" value="<?php print $values['email']; ?>"
+                <input name="email" type="email" placeholder="Р’РІРµРґРёС‚Рµ РїРѕС‡С‚Сѓ" value="<?php print $values['email']; ?>"
 	            >
             </div>
 
             <div class="pas" >
-                Год рождения:
+                Р“РѕРґ СЂРѕР¶РґРµРЅРёСЏ:
                 <select id="yearB" name="year" >
                 <?php
              for($i=1950;$i<=2023;$i++){
@@ -73,17 +73,17 @@ if (!empty($messages)) {
             </div>
 
             <div class="pas <?php if ($errors['radio-1']) {print 'error';} ?>"> 
-                Пол:<br>
+                РџРѕР»:<br>
                 <input type="radio" name="radio-1" value="male"  <?php if($values['radio-1']=="male") {print 'checked';} ?>/>
-                Мужской
+                РњСѓР¶СЃРєРѕР№
                 <input type="radio" name="radio-1" value="female" <?php if($values['radio-1']=="female") {print 'checked';} ?>/>
-                Женский
+                Р–РµРЅСЃРєРёР№
             </div>
 
 
 
             <div class="pas <?php if ($errors['radio-2']) {print 'error';} ?>">
-                Сколько конечностей?<br>
+                РЎРєРѕР»СЊРєРѕ РєРѕРЅРµС‡РЅРѕСЃС‚РµР№?<br>
                     <input type="radio" name="radio-2" value="4" <?php if($values['radio-2']=="4") {print 'checked';} ?>/>
                     4
 
@@ -99,29 +99,29 @@ if (!empty($messages)) {
 
 
             <div class="pas <?php if ($errors['super']) {print 'error';} ?>">
-                Сверхспособности?
+                РЎРІРµСЂС…СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё?
                 
                     <select name="super[]" multiple="multiple">
                     <?php if ($errors['super']) {print 'class="error"';} ?> >
-                    <option value="inv" <?php if($values['inv']==1){print 'selected';} ?>>Бессмертие</option>
-                    <option value="walk" <?php if($values['walk']==1){print 'selected';} ?>>прохождение сквозь стены</option>
-                    <option value="fly" <?php if($values['fly']==1){print 'selected';} ?>>левитация</option>
+                    <option value="inv" <?php if($values['inv']==1){print 'selected';} ?>>Р‘РµСЃСЃРјРµСЂС‚РёРµ</option>
+                    <option value="walk" <?php if($values['walk']==1){print 'selected';} ?>>РїСЂРѕС…РѕР¶РґРµРЅРёРµ СЃРєРІРѕР·СЊ СЃС‚РµРЅС‹</option>
+                    <option value="fly" <?php if($values['fly']==1){print 'selected';} ?>>Р»РµРІРёС‚Р°С†РёСЏ</option>
                     </select>
                 
             </div>
 
             <div class="pas <?php if ($errors['bio']) {print 'error';} ?>">
-                Биография?
+                Р‘РёРѕРіСЂР°С„РёСЏ?
                 <textarea name="bio"><?php print $values['bio']; ?></textarea>
             </div>
 
             <div class="pas <?php if ($errors['check-1']) {print 'error';} ?> ">
-                <input type="checkbox" name="check-1" <?php if($values['check-1']==TRUE){print 'checked';} ?>/> С контактом ознакомлен(а)
+                <input type="checkbox" name="check-1" <?php if($values['check-1']==TRUE){print 'checked';} ?>/> РЎ РєРѕРЅС‚Р°РєС‚РѕРј РѕР·РЅР°РєРѕРјР»РµРЅ(Р°)
             </div>
 
 
             <p>
-                Отправка формы:
+                РћС‚РїСЂР°РІРєР° С„РѕСЂРјС‹:
                 <input type="submit" value="Send" />
             </p>
         </form>
