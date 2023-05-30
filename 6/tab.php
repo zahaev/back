@@ -1,6 +1,6 @@
 <style>
 body{
-    background-color: #fcee0a;
+    background-color: blue;
     display: flex;
     justify-content:center;
     margin-top:5%;
