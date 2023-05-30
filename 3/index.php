@@ -1,11 +1,11 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] != 'POST'){
-	print_r('Íå POST ìåòîäû íå ïðèíèìàþòñÿ');
+	print_r('ÐÐµ POST Ð¼ÐµÑ‚Ð¾Ð´Ñ‹ Ð½Ðµ Ð¿Ñ€Ð¸Ð½Ð¸Ð¼Ð°ÑŽÑ‚ÑÑ');
 }
 $errors = FALSE;
 if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['year']) || empty($_POST['bio']) || empty($_POST['check1']) || $_POST['check1'] == false || !isset($_POST['super']) ){
-	print_r('Çàïîëíèòå ïóñòûå ïîëÿ!');
+	print_r('Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ðµ Ð¿Ð¾Ð»Ñ!');
 	exit();
 }
 $name = $_POST['name'];
@@ -22,34 +22,34 @@ $mailreg = "/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
 $list_sup = array('inv','walk','fly');
 
 if(!preg_match($reg,$name)){
-	print_r('Íåâåðíûé ôîðìàò èìåíè');
+	print_r('ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð¸Ð¼ÐµÐ½Ð¸');
 	exit();
 }
 if($limbs == 0){
-	print_r('Íåò êîíå÷íîñòåé');
+	print_r('ÐÐµÑ‚ ÐºÐ¾Ð½ÐµÑ‡Ð½Ð¾ÑÑ‚ÐµÐ¹');
 	exit();
 }
 if(!preg_match($bioreg,$bio)){
-	print_r('Íåâåðíûé ôîðìàò áèîãðàôèè');
+	print_r('ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð±Ð¸Ð¾Ð³Ñ€Ð°Ñ„Ð¸Ð¸');
 	exit();
 }
 if(!preg_match($mailreg,$email)){
-	print_r('Íåâåðíûé ôîðìàò email');
+	print_r('ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ email');
 	exit();
 }
 if($pol !== 'male' && $pol !== 'female'){
-	print_r('Íåâåðíûé ôîðìàò ïîëà');
+	print_r('ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð¿Ð¾Ð»Ð°');
 	exit();
 }
 foreach($superpowers as $checking){
 	if(array_search($checking,$list_sup)=== false){
-			print_r('Íåâåðíûé ôîðìàò ñóïåðñèë');
+			print_r('ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ ÑÑƒÐ¿ÐµÑ€ÑÐ¸Ð»');
 			exit();
 	}
 }
 
-$user = 'u52943';
-$pass = '2352838';
+$user = 'u52927';
+$pass = '5758562';
 $db = new PDO('mysql:host=localhost;dbname=u52927', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 try {
   $stmt = $db->prepare("INSERT INTO form SET name=:name, email=:email, year=:byear, pol=:pol, limbs=:limbs, bio=:bio");
@@ -84,5 +84,5 @@ catch(PDOException $e){
   exit();
 }
 
-print_r("Äàííûå îòïðàâëåíû â áä");
+print_r("Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð±Ð´");
 ?>
